@@ -21,8 +21,8 @@
     {
       "id": "02ad",
       "name": "New Car Fund",
-      "targetAmount": 39999.98,
-      "savedAmount": 15000,
+      "targetAmount": 5000000,
+      "savedAmount": 2015000,
       "category": "Vehicle",
       "deadline": "2026-08-30",
       "createdAt": "2025-08-09"

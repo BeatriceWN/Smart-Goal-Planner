@@ -11,7 +11,6 @@ export default function App() {
   const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch goals on mount
   useEffect(() => {
     async function fetchGoals() {
       try {
@@ -27,7 +26,6 @@ export default function App() {
     fetchGoals();
   }, []);
 
-  // Add new goal
   async function handleAddGoal(goal) {
     try {
       const res = await fetch(API_URL, {
@@ -42,7 +40,6 @@ export default function App() {
     }
   }
 
-  // Update goal
   async function handleUpdateGoal(id, updatedFields) {
     try {
       const res = await fetch(`${API_URL}/${id}`, {
@@ -59,7 +56,6 @@ export default function App() {
     }
   }
 
-  // Delete goal
   async function handleDeleteGoal(id) {
     try {
       await fetch(`${API_URL}/${id}`, { method: "DELETE" });
@@ -69,7 +65,6 @@ export default function App() {
     }
   }
 
-  // Make deposit (update savedAmount)
   async function handleDeposit(goalId, depositAmount) {
     const goal = goals.find((g) => g.id === goalId);
     if (!goal) return;

@@ -22,7 +22,10 @@ function ProgressBar({ saved, target }) {
 
   return (
     <div className="progress-bar-container" aria-label={`Progress: ${percent.toFixed(0)}%`}>
-      <div className={`progress-bar-fill ${colorClass}`} style={{ width: `${percent}%` }} />
+      <div
+        className={`progress-bar-fill ${colorClass}`}
+        style={{ width: `${percent}%` }}
+      />
     </div>
   );
 }
@@ -75,7 +78,7 @@ export default function GoalItem({ goal, onUpdateGoal, onDeleteGoal }) {
 
           <div className="form-group">
             <label>
-              Target Amount ($):
+              Target Amount (Ksh):
               <input
                 type="number"
                 min="1"
@@ -121,10 +124,10 @@ export default function GoalItem({ goal, onUpdateGoal, onDeleteGoal }) {
           <h3>{name}</h3>
           <p>Category: {category}</p>
           <p>
-            Saved: ${savedAmount.toLocaleString()} / ${targetAmount.toLocaleString()}
+            Saved: Ksh {savedAmount.toLocaleString()} / Ksh {targetAmount.toLocaleString()}
           </p>
           <ProgressBar saved={savedAmount} target={targetAmount} />
-          <p>Remaining: ${remaining.toLocaleString()}</p>
+          <p>Remaining: Ksh {remaining.toLocaleString()}</p>
           <p>Deadline: {deadline} ({daysLeft(deadline)} days left)</p>
 
           {status === "Warning" && <p className="overview-warning"> Nearing Deadline!</p>}

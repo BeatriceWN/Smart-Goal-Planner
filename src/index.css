@@ -153,9 +153,52 @@ select:focus {
   font-weight: 700;
 }
 
+/* Progress Bar */
+.progress-bar-container {
+  background: #eae6f8;
+  border-radius: 20px;
+  height: 18px;
+  width: 100%;
+  margin: 10px 0 10px 0;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.8s ease;
+}
+
+/* Validation error message */
+.form-error {
+  color: #f54336;
+  font-weight: 600;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+/* Button and input focus */
+button:focus,
+input:focus,
+select:focus {
+  outline: 2px solid #7a63ff;
+  outline-offset: 2px;
+}
+
+/* Input hover/focus improvements */
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="date"]:hover,
+select:hover {
+  border-color: #8f7aff;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .app-container {
     padding: 10px 15px;
   }
 }
+
+

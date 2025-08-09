@@ -17,12 +17,18 @@ export default function GoalForm({ onAddGoal }) {
   const [targetAmount, setTargetAmount] = useState("");
   const [category, setCategory] = useState(categories[0]);
   const [deadline, setDeadline] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+    setError("");
 
     if (!name || !targetAmount || !deadline) {
-      alert("Please fill in all required fields.");
+      setError("Please fill in all required fields.");
+      return;
+    }
+    if (Number(targetAmount) <= 0) {
+      setError("Target amount must be greater than zero.");
       return;
     }
 
@@ -47,7 +53,7 @@ export default function GoalForm({ onAddGoal }) {
   return (
     <section>
       <h2>Add New Goal</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
           <label>
             Goal Name:
@@ -63,7 +69,7 @@ export default function GoalForm({ onAddGoal }) {
 
         <div className="form-group">
           <label>
-            Target Amount ($):
+            Target Amount (Ksh):
             <input
               type="number"
               min="1"
@@ -98,6 +104,8 @@ export default function GoalForm({ onAddGoal }) {
             />
           </label>
         </div>
+
+        {error && <p className="form-error">{error}</p>}
 
         <button type="submit">Add Goal</button>
       </form>

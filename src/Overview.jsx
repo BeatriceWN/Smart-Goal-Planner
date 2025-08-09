@@ -1,6 +1,5 @@
 import React from "react";
 
-// Helpers
 function daysLeft(deadline) {
   const today = new Date();
   const end = new Date(deadline);
@@ -31,7 +30,7 @@ export default function Overview({ goals }) {
     <section className="overview">
       <h2>Goals Overview</h2>
       <p>Total Goals: {totalGoals}</p>
-      <p>Total Saved: ${totalSaved.toLocaleString()}</p>
+      <p>Total Saved: Ksh {totalSaved.toLocaleString()}</p>
       <p>Completed Goals: {completedGoals}</p>
 
       {warnings.length > 0 && (

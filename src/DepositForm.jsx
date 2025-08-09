@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 export default function DepositForm({ goals = [], onDeposit }) {
   const [selectedGoalId, setSelectedGoalId] = useState("");
   const [amount, setAmount] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (goals.length > 0 && !selectedGoalId) {
@@ -12,9 +13,14 @@ export default function DepositForm({ goals = [], onDeposit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setError("");
 
-    if (!selectedGoalId || !amount || Number(amount) <= 0) {
-      alert("Please select a goal and enter a positive deposit amount.");
+    if (!selectedGoalId) {
+      setError("Please select a goal.");
+      return;
+    }
+    if (!amount || Number(amount) <= 0) {
+      setError("Please enter a positive deposit amount.");
       return;
     }
 
@@ -27,7 +33,7 @@ export default function DepositForm({ goals = [], onDeposit }) {
   return (
     <section>
       <h2>Make a Deposit</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
           <label>
             Select Goal:
@@ -47,7 +53,7 @@ export default function DepositForm({ goals = [], onDeposit }) {
 
         <div className="form-group">
           <label>
-            Deposit Amount ($):
+            Deposit Amount (Ksh):
             <input
               type="number"
               min="0.01"
@@ -59,6 +65,8 @@ export default function DepositForm({ goals = [], onDeposit }) {
             />
           </label>
         </div>
+
+        {error && <p className="form-error">{error}</p>}
 
         <button type="submit">Deposit</button>
       </form>
